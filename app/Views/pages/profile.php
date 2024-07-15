@@ -31,14 +31,6 @@
                     <td><?= lang('Lang.profile.username') ?> <br> <span><?= session()->userid ?></span></td>
                 </tr>
                 <tr class="trofaccount">
-                    <td class="headeraccount"><i class="fad fa-lock"></i> </td>
-                    <td>รหัสผ่าน <br> <span>1234567890</span></td>
-                    <td class="headeraccount"><i class="fal fa-edit"></i> </td>
-                    <td class="cursorp" onclick="changepassword()"><span>เปลี่ยนรหัสผ่าน</span></td>
-                </tr>
-                <tr class="trofaccount">
-                    <td class="headeraccount"><i class="fad fa-gift"></i></td>
-                    <td>โปรโมชั่น <br> <span>ไม่รับโปรโมชั่น</span></td>
                     <td class="headeraccount"><i class="fad fa-users"></i> </td>
                     <td><?= lang('Lang.profile.web_user') ?> <br> <span>
                             <?php if (session()->webuser) : ?>
@@ -48,40 +40,64 @@
                             <?php endif ?>
                         </span>
                     </td>
+                    <td class="headeraccount"><i class="fal fa-lock"></i> </td>
+                    <td><?= lang('Lang.profile.web_password') ?> <br>
+                        <span>
+                            <?php if (session()->webpass) : ?>
+                                <?= session()->webpass ?>
+                            <?php else : ?>
+                                <?= lang('Lang.profile.have_not_pass_yet') ?>
+                            <?php endif ?>
+                        </span>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        <div style="text-align: center;">
+            <button type="button" class="loginbtn" style="max-width: 280px;" onclick="changepassword()">
+                <span>
+                    <?= lang('Lang.change_password.change_password') ?>
+                </span>
+            </button>
+        </div>
+
     </div>
     <div class="containcpass">
-        <div class="backaccount cursorp"><i class="far fa-chevron-left"></i> ย้อนกลับ</div>
-        <form>
+        <div class="backaccount cursorp"><i class="far fa-chevron-left"></i> <?= lang('Lang.register.back') ?></div>
+        <form @submit="submit">
             <div class="headertab">
-                <h2>เปลี่ยนรหัสผ่าน</h2>
+                <h2><?= lang('Lang.change_password.change_password') ?></h2>
             </div>
             <div class=" form-group">
                 <div>
-                    <label> รหัสผ่านใหม่</label>
+                    <label><?= lang('Lang.change_password.current_password') ?></label>
                     <div class="el-input mt-1">
-                        <input type="text" placeholder="รหัสผ่านใหม่" class="inputstyle">
+                        <input type="password" v-model="form.current_password" placeholder="<?= lang('Lang.change_password.current_password') ?>" class="inputstyle">
+                        <p v-if="errors.current_password" class="error">{{errors.current_password}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class=" form-group">
+                <div>
+                    <label><?= lang('Lang.change_password.new_password') ?></label>
+                    <div class="el-input mt-1">
+                        <input type="password" v-model="form.new_password" placeholder="<?= lang('Lang.change_password.new_password') ?>" class="inputstyle">
+                        <p v-if="errors.new_password" class="error">{{errors.new_password}}</p>
                     </div>
 
                 </div>
             </div>
             <div class=" form-group">
                 <div>
-                    <label> ยืนยันรหัสผ่านใหม่</label>
+                    <label><?= lang('Lang.change_password.confirm_password') ?></label>
                     <div class="el-input mt-1">
-                        <input type="text" placeholder="ยืนยันรหัสผ่านใหม่" class="inputstyle">
+                        <input type="password" v-model="form.confirm_password" placeholder="<?= lang('Lang.change_password.confirm_password') ?>" class="inputstyle">
+                        <p v-if="errors.confirm_password" class="error">{{errors.confirm_password}}</p>
                     </div>
-
                 </div>
             </div>
+            <button type="submit" class="loginbtn"><i class="fal fa-sign-in"></i> <?= lang('Lang.change_password.confrim') ?></button>
         </form>
-        <button type="button" class="loginbtn" onclick="">
-            <span>
-                เปลี่ยนรหัสผ่าน
-            </span>
-        </button>
     </div>
 </div>
 
@@ -89,6 +105,75 @@
     $(function() {
         openTab('account')
     })
+
+    Vue.createApp({
+        data() {
+            return {
+                errors: {
+                    current_password: '',
+                    new_password: '',
+                    confirm_password: '',
+                },
+                form: {
+                    current_password: '',
+                    new_password: '',
+                    confirm_password: '',
+                },
+            }
+        },
+        methods: {
+            async submit(e) {
+                e?.preventDefault()
+                this.errors.current_password = ''
+                this.errors.new_password = ''
+                this.errors.confirm_password = ''
+                // NOTE: validatate.
+                this.errors.current_password = this.validatorCurrentPassword(this.form.current_password)
+                this.errors.new_password = this.validatorPassword(this.form.new_password)
+                // equalTo
+                if (this.form.new_password != this.form.confirm_password) this.errors.confirm_password = `<?= lang('Lang.change_password.confrim_password_is_matches') ?>`
+                if (!this.errors.current_password && !this.errors.new_password && !this.errors.confirm_password) {
+                    let {
+                        status,
+                        message,
+                        data
+                    } = await post(`lobby/changepass`, this.form)
+                    if (!status) return showAlert.warning(message)
+                    return showAlert.success(message, () => {
+                        open_link('<?= site_url('login') ?>')
+                    }, 2000)
+                }
+            },
+            validatorCurrentPassword(str) {
+                // required 
+                if (!str) return `<?= lang('Lang.change_password.password_is_required') ?>`
+                // alpha numeric
+                if (!str.match(/^[0-9a-zA-Z]+$/)) return `<?= lang('Lang.change_password.password_is_alpha_numeric') ?>`
+                return ''
+            },
+            validatorPassword(str) {
+                // required 
+                if (!str) return `<?= lang('Lang.change_password.password_is_required') ?>`
+                // alpha numeric
+                if (!str.match(/^[0-9a-zA-Z]+$/)) return `<?= lang('Lang.change_password.password_is_alpha_numeric') ?>`
+                // range length
+                if (str.length < 6 || str.length > 20) return `<?= lang('Lang.change_password.password_is_min_length') ?>`
+                return ''
+            }
+        }
+    }).mount('#account')
+
+
+    // Change Password
+    function changepassword() {
+        $('.containcpass').show();
+        $('.accountdetail').hide();
+    }
+    $('.backaccount').on('click', function() {
+        $('.containcpass').hide();
+        $('.accountdetail').show();
+    });
+    // Change Password
 </script>
 
 <?= $this->endSection() ?>
