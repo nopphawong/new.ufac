@@ -881,7 +881,7 @@ footer {
 }
 .detailwd {
   width: 100%;
-  max-width: 270px;
+  max-width: 280px;
   background: linear-gradient(to bottom, #e7d39d, #b19560);
   padding: 10px 30px;
   margin: 0 auto;
@@ -1000,6 +1000,14 @@ footer {
   border-radius: 10px;
   padding: 5px 10px;
   margin: 10px 0;
+}
+.nolist {
+  border: 1px solid;
+  padding: 20px;
+  border-radius: 10px;
+}
+.nolist div {
+  text-align: center;
 }
 .containhis .nav-link.green.active {
   background: linear-gradient(204deg, #8bc34a, #134815);

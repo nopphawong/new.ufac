@@ -40,7 +40,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Our Custom CSS -->
-    <?= link_tag('assets/css/style.css') ?>
+    <?= link_tag('assets/css/style.css?v=1.1a') ?>
 
     <!-- Loader -->
     <?= link_tag('assets/css/loader.css') ?>
@@ -77,7 +77,7 @@
 
     </div>
 
-    <div class="linebtn">
+    <div class="linebtn <?= session()->logged_in ? 'logined' : '' ?>">
         <a href="<?= $line_link ?>" target="_blank" rel="noopener noreferrer">
             <img src="assets/images/line.png">
             <span><?= lang('Lang.home.contact_us') ?></span>
