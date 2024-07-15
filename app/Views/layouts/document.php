@@ -40,10 +40,10 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Our Custom CSS -->
-    <?= link_tag('assets/css/style.css?v=1.1a') ?>
+    <?= link_tag('assets/css/style.css?v=1.1b') ?>
 
     <!-- Loader -->
-    <?= link_tag('assets/css/loader.css') ?>
+    <?= link_tag('assets/css/loader.css?v=1.1b') ?>
 
     <!-- Utils -->
     <?= script_tag('assets/js/utils.js') ?>
@@ -65,11 +65,9 @@
 <body class="d-flex flex-column h-100" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
     <!-- Loader -->
     <div id="loader-area">
-        <div id="custom-loader">
-            <div id="shadow"></div>
-            <div id="box"></div>
-        </div>
+        <div class="loader"></div>
     </div>
+
 
     <div class="wrapper">
 

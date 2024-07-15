@@ -175,7 +175,7 @@ const spinner = (action = 'show' | 'hide') => {
   if (action === 'hide') {
     $('#loader-area').css('display', 'none')
   } else {
-    $('#loader-area').css('display', 'block')
+    $('#loader-area').css('display', 'flex')
   }
 }
 function random(min = 0, max = 100) {

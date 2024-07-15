@@ -66,6 +66,7 @@ abstract class BaseController extends Controller {
         $this->initial_web_info();
         $this->viewData['formatter'] = new Formatter();
         $this->viewData['locale'] = $language->getLocale();
+        $this->viewData['version'] = '1.2b';
     }
 
     private function initial_web_info() {
