@@ -43,10 +43,10 @@
     <?= link_tag('assets/css/style.css?v=1.1b') ?>
 
     <!-- Loader -->
-    <?= link_tag('assets/css/loader.css?v=1.1b') ?>
+    <?= link_tag('assets/css/loader.css?v=1.1c') ?>
 
     <!-- Utils -->
-    <?= script_tag('assets/js/utils.js') ?>
+    <?= script_tag('assets/js/utils.js?v=1.1a') ?>
 
     <!-- jQuery CDN -->
     <?= script_tag('assets/js/vue.js') ?>
