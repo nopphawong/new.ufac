@@ -46,7 +46,7 @@
     <?= link_tag('assets/css/loader.css?v=1.1c') ?>
 
     <!-- Utils -->
-    <?= script_tag('assets/js/utils.js?v=1.1a') ?>
+    <?= script_tag('assets/js/utils.js?v=1.1b') ?>
 
     <!-- jQuery CDN -->
     <?= script_tag('assets/js/vue.js') ?>

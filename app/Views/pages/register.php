@@ -158,7 +158,7 @@
                                     <div class="el-input mt-1">
                                         <div class="flex-row-gap">
                                             <input type="text" v-model="form.account_number" placeholder="<?= lang('Lang.register.bank_account_no_note') ?>" class="inputstyle">
-                                            <button :disabled="verified" type="submit" id="btn-verify" :class="!verified ? 'verifybtn' : 'disabledbtn'" style="width: 30%;height: 46px;padding: 0;margin-top:0"><?= lang('Lang.register.verrify') ?></button>
+                                            <!-- <button :disabled="verified" type="submit" id="btn-verify" :class="!verified ? 'verifybtn' : 'disabledbtn'" style="width: 30%;height: 46px;padding: 0;margin-top:0"><?= lang('Lang.register.verrify') ?></button> -->
                                         </div>
                                         <p v-if="errors.account_number" class="error">{{errors.account_number}}</p>
                                     </div>
@@ -216,8 +216,8 @@
         data() {
             return {
                 loading: false,
-                verified: false,
-                manuan_account_name: false,
+                verified: true, // NOTE: Not pass verify
+                manuan_account_name: true, // NOTE: Not pass verify
                 errors: {
                     username: '',
                     password: '',
@@ -302,9 +302,14 @@
             async submitRegister(e) {
                 e?.preventDefault()
                 if (this.loading) return
+                this.errors.financial_id = ''
+                this.errors.account_number = ''
                 this.errors.account_name = ''
+                if (!this.form.financial_id) this.errors.financial_id = `<?= lang('Lang.register.bank_is_select') ?>`
+                this.errors.account_number = this.validatorAccountNumber(this.form.account_number)
                 if (!this.form.account_name) this.errors.account_name = this.validatorAccountName(this.form.account_name)
-                if (!this.errors.account_name) {
+
+                if (!this.errors.financial_id && !this.errors.account_number && !this.errors.account_name) {
                     this.loading = true
                     let validatedPhone = await post(`register/validate-phone`, this.form)
                     this.loading = false
@@ -312,17 +317,6 @@
                         if (validatedPhone.message == 'รหัสผู้ใช้งาน 0930208780 ซ้ำ !!!') return showAlert.warning('มีผู้ใช้งานนี้ในระบแล้ว')
                         return showAlert.warning(validatedPhone.message)
                     }
-                    // this.form.web_username = ''
-                    // this.form.web_password = ''
-                    // this.form.web_agent = ''
-                    // // get webuser
-                    // let response = await post(`register/webuser`, this.form)
-                    // if (response.status) {
-                    //     let { web_username, web_password, web_agent } = response.data
-                    //     this.form.web_username = web_username
-                    //     this.form.web_password = web_password
-                    //     this.form.web_agent = web_agent
-                    // }
                     this.form.reference = reference
                     this.loading = true
                     let {
@@ -332,8 +326,6 @@
                     } = await post(`register/submit`, this.form)
                     this.loading = false
                     if (!status) {
-                        // unlink webuser
-                        // if (this.form.web_username) await post(`register/unlink-webuser`, this.form)
                         return showAlert.warning(message)
                     }
                     stepThreeToFour()

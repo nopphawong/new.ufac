@@ -29,10 +29,13 @@
                                     {{ bankNameFormat(accountData.tbankid) }} <br>
                                     <span>{{ bankAccountNumberFormat(accountData.tbankno) }}</span> <br>
                                     {{ accountData.tbankname }} <br>
-                                    <button onclick="copylink()"><i class="fad fa-copy"></i> คัดลอก</button>
+                                    <button @click="copyToClipboard(accountData.tbankno)"><i class="fad fa-copy"></i> คัดลอก </span></button>
                                 </div>
                             </div>
                             <div class="ingriddps" style="margin-top: 1em;">
+                                <div style="color: #c5c5c5;margin-bottom: 2em;">
+                                    <?= lang('Lang.deposit.deposit_note') ?>
+                                </div>
                                 <form @submit="submitTransfer">
                                     <div class="form-group">
                                         <div>
@@ -299,6 +302,14 @@
                 const end = dayjs(dayjs().format('YYYY-MM-DD') + 'T23:00:00+07:00').valueOf()
                 const now = dayjs().valueOf()
                 this.open_qr_payment = (now > start && now < end)
+            },
+            copyToClipboard(text) {
+                var $tempElement = $("<input>");
+                $("body").append($tempElement);
+                $tempElement.val(text).select();
+                document.execCommand("Copy");
+                $tempElement.remove();
+                copylink()
             }
         },
         async mounted() {

@@ -211,6 +211,7 @@ return [
         'contact_us' => 'Contact Us',
         'have_not_user_yet' => 'Haven\'t user yet',
         'have_not_pass_yet' => 'Haven\'t password yet',
+        'deposit_note' => '*After transfer is completed Specify amount transferred. Then press confirm deposit.',
     ],
     'promotion' => [
         'promotion' => 'Promotion',

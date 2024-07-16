@@ -7,11 +7,11 @@
         <img src="assets/images/icons/icon-deposit.png"><br>
         ฝากเงิน
     </div>
-    <div class="navmenu" onclick="location.href='<?= site_url('withdraw') ?>';openTab('wd')" id="navwd">
+    <div class="navmenu" onclick="location.href='<?= site_url('withdraw') ?>'" id="navwd">
         <img src="assets/images/icons/icon-withdraw.png"><br>
         ถอนเงิน
     </div>
-    <div class="navmenu" onclick="location.href='<?= site_url('history') ?>';openTab('history')" id="navhistory">
+    <div class="navmenu" onclick="location.href='<?= site_url('history') ?>'" id="navhistory">
         <img src="assets/images/icons/icon-history.png"><br>
         ประวัติ
     </div>
@@ -19,8 +19,8 @@
         <img src="assets/images/icons/icn-hot.png"><br>
         โปรโมชั่น
     </div>
-    <div class="navmenu" id="navfriend">
+    <div class="navmenu" onclick="location.href='<?= site_url('profile') ?>'" id="navaccount">
         <img src="assets/images/icons/icn-card-2.png"><br>
-        แนะนำเพื่อน
+        บัญชีของฉัน
     </div>
 </div>

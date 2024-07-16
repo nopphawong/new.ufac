@@ -184,16 +184,6 @@ function random(min = 0, max = 100) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-$(document).ready(function () {
-  $('.copybtn').click(function (event) {
-    var $tempElement = $('<input>')
-    $('body').append($tempElement)
-    $tempElement.val($(this).closest('.copybtn').find('span').text()).select()
-    document.execCommand('Copy')
-    $tempElement.remove()
-  })
-})
-
 function copylink() {
   $('.alertcopy').show()
   setTimeout(function () {
