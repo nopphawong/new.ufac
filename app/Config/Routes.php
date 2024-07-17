@@ -19,6 +19,7 @@ $routes->get('profile', 'Pages::profile', ['filter' => 'authGuard']);
 $routes->get('deposit', 'Pages::deposit', ['filter' => 'authGuard']);
 $routes->get('withdraw', 'Pages::withdraw', ['filter' => 'authGuard']);
 $routes->get('history', 'Pages::history', ['filter' => 'authGuard']);
+$routes->get('promotion', 'Pages::promotion', ['filter' => 'authGuard']);
 // $routes->get('wheel', 'Pages::wheel', ['filter' => 'authGuard']);
 // $routes->get('checkin', 'Pages::checkin', ['filter' => 'authGuard']);
 

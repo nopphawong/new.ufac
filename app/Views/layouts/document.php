@@ -40,7 +40,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Our Custom CSS -->
-    <?= link_tag('assets/css/style.css?v=1.1b') ?>
+    <?= link_tag('assets/css/style.css?v=1.1c') ?>
 
     <!-- Loader -->
     <?= link_tag('assets/css/loader.css?v=1.1c') ?>

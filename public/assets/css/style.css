@@ -1107,6 +1107,67 @@ footer {
   background: white;
 }
 
+.swiper-container-2 {
+  width: 100%;
+  max-width: 740px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 10px;
+  overflow: auto;
+  overflow: hidden;
+  margin-top: 30px;
+  padding-bottom: 40px;
+}
+.swiper-container-2 .swiper-slide {
+  width: 89%;
+  height: auto !important;
+  box-shadow: 0 0 0;
+  background-size: 100%;
+  margin-top: 0 !important;
+}
+.swiper-container-horizontal
+  > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+  padding: 5px;
+}
+.swiper-container-2 .swiper-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.swiper-button-prev,
+.swiper-container-2 .swiper-button-next {
+  transform: scale(0.6);
+  margin-top: -40px;
+  font-weight: 700;
+}
+.swiper-pagination-bullet {
+  background-color: #fff;
+  box-shadow: 0 0 5px #fff, 0 0 10px #aea07a, 0 0 15px #aea07a, 0 0 25px #aea07a,
+    0 0 35px #aea07a;
+  padding: 5px;
+}
+.swiper-container-horizontal
+  > .swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  margin: 0 6px;
+}
+.swiper-container-2 .swiper-button-next {
+  right: 5px;
+}
+.swiper-container-2 .swiper-button-prev {
+  left: 5px;
+}
+@media (max-width: 500px) {
+  .swiper-container-2 .swiper-slide {
+    width: 85%;
+    height: auto !important;
+    box-shadow: 0 0 0;
+    background-size: 100%;
+    margin-top: 0 !important;
+  }
+}
+
 /* Promotion */
 
 /*Friend SECTION*/

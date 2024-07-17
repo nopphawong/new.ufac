@@ -15,7 +15,7 @@
         <img src="assets/images/icons/icon-history.png"><br>
         ประวัติ
     </div>
-    <div class="navmenu" id="navpromotion">
+    <div class="navmenu" onclick="location.href='<?= site_url('promotion') ?>'" id="navpromotion">
         <img src="assets/images/icons/icn-hot.png"><br>
         โปรโมชั่น
     </div>
