@@ -3,8 +3,6 @@
 <?= $this->section("content") ?>
 
 <?= $this->include('layouts/header') ?>
-<?= $this->include('layouts/nav-menu') ?>
-
 <?= $this->renderSection('content') ?>
 
 <div class="myAlert-top alertcopy" style="display: none;">
@@ -99,4 +97,5 @@
     }
 </script>
 
+<?= $this->include('layouts/nav-menu') ?>
 <?= $this->endSection() ?>
