@@ -2,200 +2,207 @@
 
 <?= $this->section("content") ?>
 
-<div class="containerlogin">
-    <div class="incontainlogin">
-        <div class="row m-0">
-            <div class="col-12 col-md-6 p-0 px-4 pb-2 logoleftlogin">
-                <img src="<?= $logo ?>">
-            </div>
-            <div id="register_box" class="col-12 col-md-6 p-0 pt-4 px-4">
-                <div>
-                    <div class="headerlogin">
-                        <h2><?= lang('Lang.register.register') ?></h2>
-                    </div>
-                    <div class="stepregister">
-                        <div class="stepregis headstep1 active">1</div>
-                        <div class="stepregis headstep2">2</div>
-                        <div class="stepregis headstep3">3</div>
-                        <div class="stepregis headstep4"><i class="far fa-check"></i></div>
-                    </div>
-
-                    <!-- ---------------------step1--------------------- -->
-                    <div class="stepre01 slideto">
-                        <form @submit="validatePhone">
-                            <div class=" form-group">
-                                <div>
-                                    <label><?= lang('Lang.register.mobile_number') ?></label>
-                                    <div class="el-input mt-1">
-                                        <input type="text" v-model="form.username" placeholder="<?= lang('Lang.register.mobile_number') ?>" class="inputstyle">
-                                        <p v-if="errors.username" class="error">{{errors.username}}</p>
-                                    </div>
+<!-- Register Modal -->
+<div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background:none;">
+            <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="incontainlogin">
+                    <div class="row m-0">
+                        <div id="register_box" class="col-12 col-md-12 p-0 pt-4 px-4">
+                            <div>
+                                <div class="headerlogin">
+                                    <h2><?= lang('Lang.register.register') ?></h2>
                                 </div>
-                            </div>
-                            <button type="submit" class="loginbtn" id="btn-step1">
-                                <?= lang('Lang.register.next') ?>
-                            </button>
-                        </form>
-                    </div>
-                    <!-- ---------------------End step1--------------------- -->
-
-                    <!-- ---------------------step2--------------------- -->
-                    <div class="regisstep stepre02 slideto">
-                        <form @submit="validatePassword">
-                            <div class=" form-group">
-                                <div>
-                                    <label><?= lang('Lang.register.password') ?></label>
-                                    <div class="el-input mt-1">
-                                        <input type="password" v-model="form.password" placeholder="<?= lang('Lang.register.password') ?>" class="inputstyle">
-                                        <p v-if="errors.password" class="error">{{errors.password}}</p>
-                                    </div>
+                                <div class="stepregister">
+                                    <div class="stepregis headstep1 active">1</div>
+                                    <div class="stepregis headstep2">2</div>
+                                    <div class="stepregis headstep3">3</div>
+                                    <div class="stepregis headstep4"><i class="far fa-check"></i></div>
                                 </div>
-                            </div>
 
-                            <div class=" form-group">
-                                <div>
-                                    <label><?= lang('Lang.register.confirm_password') ?></label>
-                                    <div class="el-input mt-1">
-                                        <input type="password" v-model="form.confirm_password" placeholder="<?= lang('Lang.register.confirm_password') ?>" class="inputstyle">
-                                        <p v-if="errors.confirm_password" class="error">{{errors.confirm_password}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex-row-gap">
-                                <button type="button" class="backbtn" id="btn-back1">
-                                    <?= lang('Lang.register.back') ?>
-                                </button>
-                                <button type="submit" class="loginbtn" id="btn-step2">
-                                    <?= lang('Lang.register.next') ?>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- ---------------------End step2--------------------- -->
-
-                    <!-- ---------------------step3--------------------- -->
-                    <div class="regisstep stepre03 slideto">
-                        <form @submit="verifyBank">
-                            <div class=" form-group">
-                                <div>
-                                    <label><?= lang('Lang.register.bank') ?></label>
-                                    <div class="x-bank-choices-type mt-1 mb-2">
-                                        <div class="-outer-wrapper">
-                                            <input type="radio" class="-input-radio" id="bank-acc-51620499644" name="bank_code" value="BBL" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-51620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/bbl.svg" alt="BBL">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-61620499644" name="bank_code" value="KBANK" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-61620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/kbank.svg" alt="KBANK">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-71620499644" name="bank_code" value="KTB" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-71620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/ktb.svg" alt="KTB">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-81620499644" name="bank_code" value="TTB" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-81620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/ttb.svg" alt="TTB">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-91620499644" name="bank_code" value="SCB" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-91620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/scb.svg" alt="SCB">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-101620499644" name="bank_code" value="CIMB" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-101620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/cimb.svg" alt="CIMB">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-111620499644" name="bank_code" value="UOB" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-111620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/uobt.svg" alt="UOB">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-121620499644" name="bank_code" value="BAY" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-121620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/bay.svg" alt="BAY">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-131620499644" name="bank_code" value="GSB" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-131620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/gsb.svg" alt="GSB">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-141620499644" name="bank_code" value="BAAC" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-141620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/baac.svg" alt="BAAC">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-151620499644" name="bank_code" value="TISCO" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-151620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/tisco.svg" alt="TISCO">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-161620499644" name="bank_code" value="KKP" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-161620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/kkp.svg" alt="KKP">
-                                                <i class="fas fa-check"></i>
-                                            </label>
-                                            <input type="radio" class="-input-radio" id="bank-acc-171620499644" name="bank_code" value="LHFG" v-model="form.financial_id">
-                                            <label class="-label" for="bank-acc-171620499644">
-                                                <img class="-logo" src="<?= base_url() ?>assets/images/bank/lhfg.svg" alt="LHFG">
-                                                <i class="fas fa-check"></i>
-                                            </label>
+                                <!-- ---------------------step1--------------------- -->
+                                <div class="stepre01 slideto">
+                                    <form @submit="validatePhone">
+                                        <div class=" form-group">
+                                            <div>
+                                                <label><?= lang('Lang.register.mobile_number') ?></label>
+                                                <div class="el-input mt-1">
+                                                    <input type="text" v-model="form.username" placeholder="<?= lang('Lang.register.mobile_number') ?>" class="inputstyle">
+                                                    <p v-if="errors.username" class="error">{{errors.username}}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <p v-if="errors.financial_id" class="error">{{errors.financial_id}}</p>
-                                    </div>
+                                        <button type="submit" class="loginbtn" id="btn-step1">
+                                            <?= lang('Lang.register.next') ?>
+                                        </button>
+                                    </form>
                                 </div>
-                            </div>
+                                <!-- ---------------------End step1--------------------- -->
 
-                            <div class=" form-group">
-                                <div>
-                                    <label><?= lang('Lang.register.bank_account_no') ?></label>
-                                    <div class="el-input mt-1">
+                                <!-- ---------------------step2--------------------- -->
+                                <div class="regisstep stepre02 slideto">
+                                    <form @submit="validatePassword">
+                                        <div class=" form-group">
+                                            <div>
+                                                <label><?= lang('Lang.register.password') ?></label>
+                                                <div class="el-input mt-1">
+                                                    <input type="password" v-model="form.password" placeholder="<?= lang('Lang.register.password') ?>" class="inputstyle">
+                                                    <p v-if="errors.password" class="error">{{errors.password}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class=" form-group">
+                                            <div>
+                                                <label><?= lang('Lang.register.confirm_password') ?></label>
+                                                <div class="el-input mt-1">
+                                                    <input type="password" v-model="form.confirm_password" placeholder="<?= lang('Lang.register.confirm_password') ?>" class="inputstyle">
+                                                    <p v-if="errors.confirm_password" class="error">{{errors.confirm_password}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="flex-row-gap">
-                                            <input type="text" v-model="form.account_number" placeholder="<?= lang('Lang.register.bank_account_no_note') ?>" class="inputstyle">
-                                            <!-- <button :disabled="verified" type="submit" id="btn-verify" :class="!verified ? 'verifybtn' : 'disabledbtn'" style="width: 30%;height: 46px;padding: 0;margin-top:0"><?= lang('Lang.register.verrify') ?></button> -->
+                                            <button type="button" class="backbtn" id="btn-back1">
+                                                <?= lang('Lang.register.back') ?>
+                                            </button>
+                                            <button type="submit" class="loginbtn" id="btn-step2">
+                                                <?= lang('Lang.register.next') ?>
+                                            </button>
                                         </div>
-                                        <p v-if="errors.account_number" class="error">{{errors.account_number}}</p>
-                                    </div>
+                                    </form>
                                 </div>
-                            </div>
-                        </form>
-                        <form @submit="submitRegister">
-                            <div class=" form-group">
-                                <div>
-                                    <label><?= lang('Lang.register.bank_account_name') ?></label>
-                                    <div class="el-input mt-1">
-                                        <input type="text" v-model="form.account_name" placeholder="<?= lang('Lang.register.bank_account_name') ?>" class="inputstyle" :readonly="!manuan_account_name">
-                                        <p v-if="errors.account_name" class="error">{{errors.account_name}}</p>
-                                    </div>
+                                <!-- ---------------------End step2--------------------- -->
+
+                                <!-- ---------------------step3--------------------- -->
+                                <div class="regisstep stepre03 slideto">
+                                    <form @submit="verifyBank">
+                                        <div class=" form-group">
+                                            <div>
+                                                <label><?= lang('Lang.register.bank') ?></label>
+                                                <div class="x-bank-choices-type mt-1 mb-2">
+                                                    <div class="-outer-wrapper">
+                                                        <input type="radio" class="-input-radio" id="bank-acc-51620499644" name="bank_code" value="BBL" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-51620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/bbl.svg" alt="BBL">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-61620499644" name="bank_code" value="KBANK" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-61620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/kbank.svg" alt="KBANK">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-71620499644" name="bank_code" value="KTB" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-71620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/ktb.svg" alt="KTB">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-81620499644" name="bank_code" value="TTB" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-81620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/ttb.svg" alt="TTB">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-91620499644" name="bank_code" value="SCB" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-91620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/scb.svg" alt="SCB">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-101620499644" name="bank_code" value="CIMB" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-101620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/cimb.svg" alt="CIMB">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-111620499644" name="bank_code" value="UOB" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-111620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/uobt.svg" alt="UOB">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-121620499644" name="bank_code" value="BAY" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-121620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/bay.svg" alt="BAY">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-131620499644" name="bank_code" value="GSB" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-131620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/gsb.svg" alt="GSB">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-141620499644" name="bank_code" value="BAAC" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-141620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/baac.svg" alt="BAAC">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-151620499644" name="bank_code" value="TISCO" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-151620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/tisco.svg" alt="TISCO">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-161620499644" name="bank_code" value="KKP" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-161620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/kkp.svg" alt="KKP">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                        <input type="radio" class="-input-radio" id="bank-acc-171620499644" name="bank_code" value="LHFG" v-model="form.financial_id">
+                                                        <label class="-label" for="bank-acc-171620499644">
+                                                            <img class="-logo" src="<?= base_url() ?>assets/images/bank/lhfg.svg" alt="LHFG">
+                                                            <i class="fas fa-check"></i>
+                                                        </label>
+                                                    </div>
+                                                    <p v-if="errors.financial_id" class="error">{{errors.financial_id}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class=" form-group">
+                                            <div>
+                                                <label><?= lang('Lang.register.bank_account_no') ?></label>
+                                                <div class="el-input mt-1">
+                                                    <div class="flex-row-gap">
+                                                        <input type="text" v-model="form.account_number" placeholder="<?= lang('Lang.register.bank_account_no_note') ?>" class="inputstyle">
+                                                        <!-- <button :disabled="verified" type="submit" id="btn-verify" :class="!verified ? 'verifybtn' : 'disabledbtn'" style="width: 30%;height: 46px;padding: 0;margin-top:0"><?= lang('Lang.register.verrify') ?></button> -->
+                                                    </div>
+                                                    <p v-if="errors.account_number" class="error">{{errors.account_number}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form @submit="submitRegister">
+                                        <div class=" form-group">
+                                            <div>
+                                                <label><?= lang('Lang.register.bank_account_name') ?></label>
+                                                <div class="el-input mt-1">
+                                                    <input type="text" v-model="form.account_name" placeholder="<?= lang('Lang.register.bank_account_name') ?>" class="inputstyle" :readonly="!manuan_account_name">
+                                                    <p v-if="errors.account_name" class="error">{{errors.account_name}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex-row-gap">
+                                            <button type="button" class="backbtn" id="btn-back2">
+                                                <?= lang('Lang.register.back') ?>
+                                            </button>
+                                            <button :disabled="!verified" type="submit" id="btn-step3" :class="verified ? 'loginbtn' : 'disabledbtn'"><?= lang('Lang.register.confirm') ?></button>
+                                        </div>
+                                    </form>
                                 </div>
-                            </div>
+                                <!-- ---------------------End step3--------------------- -->
 
-                            <div class="flex-row-gap">
-                                <button type="button" class="backbtn" id="btn-back2">
-                                    <?= lang('Lang.register.back') ?>
-                                </button>
-                                <button :disabled="!verified" type="submit" id="btn-step3" :class="verified ? 'loginbtn' : 'disabledbtn'"><?= lang('Lang.register.confirm') ?></button>
+                                <!-- ---------------------step4--------------------- -->
+                                <div class="regisstep stepre04 slideto finishcontain">
+                                    <?= lang('Lang.register.register_is_succeed') ?>
+                                </div>
+                                <!-- ---------------------End step4--------------------- -->
+                                <div class="wantregister"><?= lang('Lang.register.have_account') ?> <a onclick="openLoginModal()" style="cursor: pointer;"><?= lang('Lang.register.login_now') ?></a></div>
                             </div>
-                        </form>
+                            <div class="lang-pos">
+                                <a href="<?= site_url('lang/th') ?>"><img src="<?= base_url() ?>assets/images/th.png" class="lang"></a>
+                                <a href="<?= site_url('lang/en') ?>"><img src="<?= base_url() ?>assets/images/en.png" class="lang"></a>
+                            </div>
+                        </div>
                     </div>
-                    <!-- ---------------------End step3--------------------- -->
-
-                    <!-- ---------------------step4--------------------- -->
-                    <div class="regisstep stepre04 slideto finishcontain">
-                        <?= lang('Lang.register.register_is_succeed') ?>
-                    </div>
-                    <!-- ---------------------End step4--------------------- -->
-                    <div class="wantregister"><?= lang('Lang.register.have_account') ?> <a href="<?= site_url('login') ?>"><?= lang('Lang.register.login_now') ?></a></div>
-                </div>
-                <div class="lang-pos">
-                    <a href="<?= site_url('lang/th') ?>"><img src="<?= base_url() ?>assets/images/th.png" class="lang"></a>
-                    <a href="<?= site_url('lang/en') ?>"><img src="<?= base_url() ?>assets/images/en.png" class="lang"></a>
                 </div>
             </div>
         </div>
@@ -387,7 +394,7 @@
         $(".headstep3").removeClass("active");
         $(".headstep4").addClass("active");
         setTimeout(function() {
-                open_link('<?= site_url('login') ?>')
+                openLoginModal()
             },
             2000)
     }
