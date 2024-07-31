@@ -82,8 +82,8 @@
                     <div class="wantregister"><?= lang('Lang.register.have_account') ?> <a href="<?= site_url('login') ?>"><?= lang('Lang.register.login_now') ?></a></div>
                 </div>
                 <div class="lang-pos">
-                    <a href="<?= site_url('lang/th') ?>"><img src="<?= base_url() ?>assets/images/th.png" class="lang"></a>
-                    <a href="<?= site_url('lang/en') ?>"><img src="<?= base_url() ?>assets/images/en.png" class="lang"></a>
+                    <a href="<?= site_url('lang/th') ?>"><img src="/assets/images/th.png" class="lang"></a>
+                    <a href="<?= site_url('lang/en') ?>"><img src="/assets/images/en.png" class="lang"></a>
                 </div>
             </div>
         </div>

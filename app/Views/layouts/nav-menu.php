@@ -1,27 +1,26 @@
-<div class="p-5 d-md-none"></div>
 <div class="header-menu">
     <div class="navmenu" onclick="location.href='<?= site_url('') ?>'" id="navhomepage">
-        <img src="assets/images/icons/icon-home.png"><br>
+        <img src="/assets/images/icons/icon-home.png"><br>
         หน้าหลัก
     </div>
     <div class="navmenu" onclick="location.href='<?= site_url('deposit') ?>'" id="navdps">
-        <img src="assets/images/icons/icon-deposit.png"><br>
+        <img src="/assets/images/icons/icon-deposit.png"><br>
         ฝากเงิน
     </div>
     <div class="navmenu" onclick="location.href='<?= site_url('withdraw') ?>'" id="navwd">
-        <img src="assets/images/icons/icon-withdraw.png"><br>
+        <img src="/assets/images/icons/icon-withdraw.png"><br>
         ถอนเงิน
     </div>
     <div class="navmenu" onclick="location.href='<?= site_url('history') ?>'" id="navhistory">
-        <img src="assets/images/icons/icon-history.png"><br>
+        <img src="/assets/images/icons/icon-history.png"><br>
         ประวัติ
     </div>
     <div class="navmenu" onclick="location.href='<?= site_url('promotion') ?>'" id="navpromotion">
-        <img src="assets/images/icons/icn-hot.png"><br>
+        <img src="/assets/images/icons/icn-hot.png"><br>
         โปรโมชั่น
     </div>
     <div class="navmenu" onclick="location.href='<?= site_url('profile') ?>'" id="navaccount">
-        <img src="assets/images/icons/icn-card-2.png"><br>
+        <img src="/assets/images/icons/icn-card-2.png"><br>
         บัญชีของฉัน
     </div>
 </div>

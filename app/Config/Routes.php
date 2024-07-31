@@ -20,8 +20,9 @@ $routes->get('deposit', 'Pages::deposit', ['filter' => 'authGuard']);
 $routes->get('withdraw', 'Pages::withdraw', ['filter' => 'authGuard']);
 $routes->get('history', 'Pages::history', ['filter' => 'authGuard']);
 $routes->get('promotion', 'Pages::promotion', ['filter' => 'authGuard']);
-// $routes->get('wheel', 'Pages::wheel', ['filter' => 'authGuard']);
-// $routes->get('checkin', 'Pages::checkin', ['filter' => 'authGuard']);
+// $routes->get('event/wheel', 'Pages::wheel', ['filter' => 'authGuard']);
+// $routes->get('event/checkin', 'Pages::checkin', ['filter' => 'authGuard']);
+$routes->get('event/lotto', 'Pages::lotto', ['filter' => 'authGuard']);
 
 // API
 $routes->post('auth/login', 'api\Auth::login');
@@ -65,4 +66,10 @@ $routes->group('event', static function ($routes) {
     $routes->post('checkin/histories', 'api\Event::getCheckinHistories');
     $routes->post('checkin/claim', 'api\Event::getCheckinClaim');
     $routes->post('checkin/claimall', 'api\Event::getCheckinClaimAll');
+
+    $routes->post('lotto/list', 'api\Event::getLottoList');
+    $routes->post('lotto/info', 'api\Event::getLottoInfo');
+    $routes->post('lotto/history', 'api\Event::getLottoHistory');
+    $routes->post('lotto/number/list', 'api\Event::getLottoNumberList');
+    $routes->post('lotto/number/buy', 'api\Event::getLottoNumberBuy');
 });

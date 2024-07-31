@@ -12,7 +12,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <img src="<?= base_url() ?>assets/images/bank/<?= $formatter->bank_icon_format(session()->bankid) ?>.svg">
+                            <img src="/assets/images/bank/<?= $formatter->bank_icon_format(session()->bankid) ?>.svg">
                         </td>
                         <td>
                             <?= lang('Lang.profile.bank_name') ?>: <?= $formatter->bank_name_format(session()->bankid) ?> <br>

@@ -190,3 +190,37 @@ function copylink() {
     $('.alertcopy').hide()
   }, 2000)
 }
+
+const months_th = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม",];
+const months_th_mini = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค.",];
+function date_th(date) {
+  if (!date) return ``
+  date = new Date(date)
+  return `${date.getDate().toString().padStart(2, `0`)} ${months_th[date.getMonth()]} ${date.getFullYear() + 543}`
+}
+function datetime_th(date) {
+  if (!date) return ``
+  date = new Date(date)
+  return `${date.getDate().toString().padStart(2, `0`)} ${months_th[date.getMonth()]} ${date.getFullYear() + 543} ${date.getHours().toString().padStart(2, `0`)}:${date.getMinutes().toString().padStart(2, `0`)}น.`
+}
+
+function getNow(format = `yyyy-MM-dd HH:mm:ss`) {
+  return formatDate(new Date(), format)
+}
+function formatDate(inputDate, format) {
+  if (!inputDate) return ''
+
+  const padZero = (value) => (value < 10 ? `0${value}` : `${value}`)
+  const parts = {
+    yyyy: inputDate.getFullYear(),
+    MM: padZero(inputDate.getMonth() + 1),
+    dd: padZero(inputDate.getDate()),
+    HH: padZero(inputDate.getHours()),
+    hh: padZero(inputDate.getHours() > 12 ? inputDate.getHours() - 12 : inputDate.getHours()),
+    mm: padZero(inputDate.getMinutes()),
+    ss: padZero(inputDate.getSeconds()),
+    tt: inputDate.getHours() < 12 ? 'AM' : 'PM'
+  }
+
+  return format.replace(/yyyy|MM|dd|HH|hh|mm|ss|tt/g, (match) => parts[match])
+}

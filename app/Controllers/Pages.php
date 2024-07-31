@@ -57,4 +57,7 @@ class Pages extends BaseController
     {
         return view("pages/promotion", $this->viewData);
     }
+    public function lotto() {
+        return view("pages/lotto", $this->viewData);
+    }
 }
