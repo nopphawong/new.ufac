@@ -11,8 +11,8 @@
             <template v-if="open_qr_payment">
                 <div class="col-10 p-0 topdps">
                     <div class="nav flex-row nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><img class="banktabicon" src="assets/images/icons/bankicon.png"> ธนาคาร</a>
-                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><img class="banktabicon" src="assets/images/icons/qrcode.png"> QR Code</a>
+                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><img class="banktabicon" src="<?= base_url() ?>assets/images/icons/bankicon.png"> ธนาคาร</a>
+                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><img class="banktabicon" src="<?= base_url() ?>assets/images/icons/qrcode.png"> QR Code</a>
                     </div>
                 </div>
             </template>

@@ -9,6 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('lang/{locale}', 'Language::change');
 
 // PAGES
+$routes->get('register', 'Pages::register');
 $routes->get('/', 'Pages::index');
 $routes->get('/logout', 'Pages::logout');
 $routes->get('profile', 'Pages::profile');
@@ -17,6 +18,10 @@ $routes->get('deposit', 'Pages::deposit');
 $routes->get('withdraw', 'Pages::withdraw');
 $routes->get('history', 'Pages::history');
 $routes->get('promotion', 'Pages::promotion');
+// $routes->get('event/wheel', 'Pages::wheel');
+// $routes->get('event/checkin', 'Pages::checkin');
+$routes->get('event/lotto', 'Pages::lotto');
+// $routes->get('change-password', 'Pages::changePassword');
 // $routes->get('wheel', 'Pages::wheel');
 // $routes->get('checkin', 'Pages::checkin');
 
@@ -62,4 +67,10 @@ $routes->group('event', static function ($routes) {
     $routes->post('checkin/histories', 'api\Event::getCheckinHistories');
     $routes->post('checkin/claim', 'api\Event::getCheckinClaim');
     $routes->post('checkin/claimall', 'api\Event::getCheckinClaimAll');
+
+    $routes->post('lotto/list', 'api\Event::getLottoList');
+    $routes->post('lotto/info', 'api\Event::getLottoInfo');
+    $routes->post('lotto/history', 'api\Event::getLottoHistory');
+    $routes->post('lotto/number/list', 'api\Event::getLottoNumberList');
+    $routes->post('lotto/number/buy', 'api\Event::getLottoNumberBuy');
 });

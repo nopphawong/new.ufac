@@ -3,6 +3,8 @@
 <?= $this->section("content") ?>
 
 <?= $this->include('layouts/header') ?>
+<?= $this->include('layouts/nav-menu') ?>
+
 <?= $this->renderSection('content') ?>
 
 <?php if (!session()->logged_in) {
@@ -18,6 +20,7 @@
     <strong>
         คัดลอกเรียบร้อยแล้ว </strong>
 </div>
+
 
 <script type="text/javascript">
     // NOTE: For ref.
@@ -84,7 +87,7 @@
                 this.timer = setInterval(async () => {
                     await this.getLobbyData(false)
                     // await this.jobDaily()
-                }, 30000)
+                }, 60000)
             }
         },
         async unmounted() {
@@ -115,6 +118,5 @@
         }, 2000)
     }
 </script>
-
-<?= $this->include('layouts/nav-menu') ?>
+<div class="p-5 d-md-none"></div>
 <?= $this->endSection() ?>

@@ -14,19 +14,12 @@ class Pages extends BaseController
     {
         return view("pages/home", $this->viewData);
     }
-    public function login()
-    {
-        $this->viewData["use_meta_tag"] = true;
-        return view("pages/login", $this->viewData);
-    }
+
     public function register()
     {
-        return view("pages/register", $this->viewData);
-    }
-    public function forgot()
-    {
-        echo '<script>localStorage.clear("kCountdown")</script>';
-        return view("pages/forgot", $this->viewData);
+        $uri = $this->request->getUri();
+        return redirect()->to("?{$uri->getQuery()}");
+        // return view("pages/register", $this->viewData);
     }
     public function logout()
     {
@@ -56,5 +49,8 @@ class Pages extends BaseController
     public function promotion()
     {
         return view("pages/promotion", $this->viewData);
+    }
+    public function lotto() {
+        return view("pages/lotto", $this->viewData);
     }
 }

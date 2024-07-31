@@ -35,7 +35,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="loginbtn" id="btn-step1">
+                                        <button type="submit" class="loginbtn" id="btn-forgot-step1">
                                             Request OTP
                                         </button>
                                     </form>
@@ -67,7 +67,7 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="loginbtn" id="btn-step2">
+                                        <button type="submit" class="loginbtn" id="btn-forgot-step2">
                                             <?= lang('Lang.forgot.confirm') ?>
                                         </button>
 
@@ -83,7 +83,7 @@
                                     <?= lang('Lang.forgot.reset_password_is_succeed') ?>
                                 </div>
                                 <!-- ---------------------End step3--------------------- -->
-                                <div class="wantregister"><?= lang('Lang.register.have_account') ?> <a onclick="openLoginModal()" style="cursor: pointer;"><?= lang('Lang.register.login_now') ?></a></div>
+                                <div class="wantregister"><?= lang('Lang.register.have_account') ?> <a href="<?= site_url('login') ?>"><?= lang('Lang.register.login_now') ?></a></div>
                             </div>
                             <div class="lang-pos">
                                 <a href="<?= site_url('lang/th') ?>"><img src="<?= base_url() ?>assets/images/th.png" class="lang"></a>
@@ -203,6 +203,7 @@
         $(".headstep3").addClass("active");
 
         setTimeout(function() {
+            // localStorage.clear("kCountdown")
             openLoginModal()
         }, 2000)
     }
@@ -210,6 +211,7 @@
     // Back step 1
     function backToStep1() {
         clearInterval(x)
+        localStorage.clear("kCountdown")
         $(".stepre02").hide();
         $(".stepre01").show();
         $(".headstep2").removeClass("active");

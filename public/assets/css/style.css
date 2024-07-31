@@ -287,9 +287,16 @@ footer {
     right: 15px;
     bottom: 85px;
   }
+  .lottobtn.logined {
+    right: 90px;
+    bottom: 85px;
+  }
 }
 @media (max-width: 490px) {
   .linebtn.logined {
+    bottom: 18vw;
+  }
+  .lottobtn.logined {
     bottom: 18vw;
   }
 }
@@ -1450,3 +1457,31 @@ select:-webkit-autofill:focus {
   color: #ffe57b;
 }
 /* Account */
+
+
+.icon-48px {
+  width: 48px !important;
+  height: 48px !important;
+  aspect-ratio: 1 / 1;
+}
+
+.lottobtn {
+  z-index: 1;
+  position: fixed;
+  right: 90px;
+  bottom: 10px;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.lottobtn img {
+  width: 60px;
+  display: block;
+}
+.lottobtn span {
+  font-weight: bold;
+  color: #ddc690;
+  text-shadow: 0 0 10px black, 0 0 20px black;
+}

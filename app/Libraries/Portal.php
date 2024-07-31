@@ -125,6 +125,26 @@ class Portal {
         return self::post("channel/list", $data);
     }
 
+    // lotto
+    public function lotto_list($data = array()) {
+        return self::post("lotto/list", $data);
+    }
+    public function lotto_info($data = array()) {
+        return self::post("lotto/info", $data);
+    }
+    public function lotto_history($data = array()) {
+        return self::post("lotto/history", $data);
+    }
+    public function lotto_point($data = array()) {
+        return self::post("lotto/point", $data);
+    }
+    public function lotto_number_list($data = array()) {
+        return self::post("lotto/number/list", $data);
+    }
+    public function lotto_number_buy($data = array()) {
+        return self::post("lotto/number/buy", $data);
+    }
+
 
     /* ========================================================================== */
 

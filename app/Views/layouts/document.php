@@ -40,23 +40,23 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Our Custom CSS -->
-    <?= link_tag('assets/css/style.css?v=1.1e') ?>
+    <?= link_tag('/assets/css/style.css?v=1.2a') ?>
 
     <!-- Loader -->
-    <?= link_tag('assets/css/loader.css?v=1.1c') ?>
+    <?= link_tag('/assets/css/loader.css?v=1.1c') ?>
 
     <!-- Utils -->
-    <?= script_tag('assets/js/utils.js?v=1.1b') ?>
+    <?= script_tag('/assets/js/utils.js?v=1.1c') ?>
 
     <!-- jQuery CDN -->
-    <?= script_tag('assets/js/vue.js') ?>
+    <?= script_tag('/assets/js/vue.js') ?>
 
     <!-- Day JS -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 
     <?php if (isset($use_winwheel) && $use_winwheel) : ?>
-        <?= script_tag('assets/winwheel/TweenMax.min.js') ?>
-        <?= script_tag('assets/winwheel/Winwheel.min.js') ?>
+        <?= script_tag('/assets/winwheel/TweenMax.min.js') ?>
+        <?= script_tag('/assets/winwheel/Winwheel.min.js') ?>
     <?php endif ?>
 
 </head>
@@ -75,9 +75,15 @@
 
     </div>
 
+    <div class="lottobtn <?= session()->logged_in ? 'logined' : 'd-none' ?>">
+        <a href="/event/lotto" target="_self" rel="noopener noreferrer">
+            <img src="<?= base_url() ?>assets/images/lotto.png">
+            <span><?= lang('Lang.lotto.title') ?></span>
+        </a>
+    </div>
     <div class="linebtn <?= session()->logged_in ? 'logined' : '' ?>">
         <a href="<?= $line_link ?>" target="_blank" rel="noopener noreferrer">
-            <img src="assets/images/line.png">
+            <img src="<?= base_url() ?>assets/images/line.png">
             <span><?= lang('Lang.home.contact_us') ?></span>
         </a>
     </div>
@@ -92,7 +98,7 @@
     <!-- Sweetalert 2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Hidden form playgame. -->
-    <script src="assets/js/hidden_form.js"></script>
+    <script src="/assets/js/hidden_form.js"></script>
 
     <script>
         AOS.init({
