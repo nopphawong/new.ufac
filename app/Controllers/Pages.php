@@ -17,7 +17,9 @@ class Pages extends BaseController
 
     public function register()
     {
-        return view("pages/register", $this->viewData);
+        $uri = $this->request->getUri();
+        return redirect()->to("?{$uri->getQuery()}");
+        // return view("pages/register", $this->viewData);
     }
     public function logout()
     {
