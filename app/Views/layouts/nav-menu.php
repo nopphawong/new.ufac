@@ -1,5 +1,5 @@
 <div class="header-menu">
-    <div class="navmenu" onclick="checkLogin('home')" id="navhomepage">
+    <div class="navmenu" onclick="location.href = '<?= site_url('') ?>'" id="navhomepage">
         <img src="assets/images/icons/icon-home.png"><br>
         หน้าหลัก
     </div>
@@ -29,10 +29,6 @@
     const logged_in = Boolean('<?= session()->logged_in ?>')
     const checkLogin = (page) => {
         switch (page) {
-            case 'home':
-                if (logged_in) location.href = '<?= site_url('') ?>'
-                else openLoginModal()
-                break;
             case 'deposit':
                 if (logged_in) location.href = '<?= site_url('deposit') ?>'
                 else openLoginModal()

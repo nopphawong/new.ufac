@@ -22,6 +22,14 @@
 </div>
 
 <script type="text/javascript">
+    // NOTE: For ref.
+    const searchParams = new URLSearchParams(window.location.search);
+    for (const key of searchParams.keys()) {
+        if (key === 'ref') setTimeout(() => {
+            openRegisterModal()
+        }, 1000);
+    }
+
     Vue.createApp({
         data() {
             return {
