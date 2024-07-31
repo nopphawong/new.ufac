@@ -153,21 +153,60 @@ footer {
   }
 }
 
-/* Login Container */
-.containerlogin {
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, #272727 0, #060606 70%);
+#login-modal .modal-body,
+#register-modal .modal-body,
+#forgot-modal .modal-body {
+  width: 500px;
+  background: radial-gradient(circle, #272727ed 0, #060606 90%);
   position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 30px;
   z-index: 0;
+  border: 1px solid #7d7d7d;
+  border-radius: 15px;
+}
+
+.close-modal {
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  color: #fff;
+  font-size: 80px;
+  font-weight: 100;
+  z-index: 1;
+}
+
+/* Login Container */
+.containerlogin {
+  width: 500px;
+  background: radial-gradient(circle, #272727ed 0, #060606 90%);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  z-index: 0;
+  border: 1px solid #7d7d7d;
+  border-radius: 15px;
 }
 @media (max-width: 520px) {
-  .containerlogin {
+  #login-modal .modal-body,
+  #register-modal .modal-body,
+  #forgot-modal .modal-body {
+    width: 100%;
+    height: 100%;
     padding: 0px;
+    border: none;
+    border-radius: 0;
+  }
+  .containerlogin {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    border: none;
+    border-radius: 0;
   }
 }
 .incontainlogin {
@@ -176,7 +215,7 @@ footer {
   margin: 0 auto;
   color: #ffe57b;
   overflow: auto;
-  padding-bottom: 68px;
+  padding-bottom: 34px;
 }
 .incontainlogin img {
   width: 100%;

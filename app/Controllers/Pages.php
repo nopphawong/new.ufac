@@ -14,24 +14,15 @@ class Pages extends BaseController
     {
         return view("pages/home", $this->viewData);
     }
-    public function login()
-    {
-        $this->viewData["use_meta_tag"] = true;
-        return view("pages/login", $this->viewData);
-    }
+
     public function register()
     {
         return view("pages/register", $this->viewData);
     }
-    public function forgot()
-    {
-        echo '<script>localStorage.clear("kCountdown")</script>';
-        return view("pages/forgot", $this->viewData);
-    }
     public function logout()
     {
         session()->destroy();
-        return redirect()->to(site_url("login"));
+        return redirect()->to(site_url("/"));
     }
     public function profile()
     {

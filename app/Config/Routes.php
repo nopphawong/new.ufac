@@ -9,20 +9,21 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('lang/{locale}', 'Language::change');
 
 // PAGES
-$routes->get('login', 'Pages::login');
 $routes->get('register', 'Pages::register');
-$routes->get('forgot', 'Pages::forgot');
-$routes->get('/', 'Pages::index', ['filter' => 'authGuard']);
-$routes->get('/logout', 'Pages::logout', ['filter' => 'authGuard']);
-$routes->get('profile', 'Pages::profile', ['filter' => 'authGuard']);
-// $routes->get('change-password', 'Pages::changePassword', ['filter' => 'authGuard']);
-$routes->get('deposit', 'Pages::deposit', ['filter' => 'authGuard']);
-$routes->get('withdraw', 'Pages::withdraw', ['filter' => 'authGuard']);
-$routes->get('history', 'Pages::history', ['filter' => 'authGuard']);
-$routes->get('promotion', 'Pages::promotion', ['filter' => 'authGuard']);
-// $routes->get('event/wheel', 'Pages::wheel', ['filter' => 'authGuard']);
-// $routes->get('event/checkin', 'Pages::checkin', ['filter' => 'authGuard']);
-$routes->get('event/lotto', 'Pages::lotto', ['filter' => 'authGuard']);
+$routes->get('/', 'Pages::index');
+$routes->get('/logout', 'Pages::logout');
+$routes->get('profile', 'Pages::profile');
+// $routes->get('change-password', 'Pages::changePassword');
+$routes->get('deposit', 'Pages::deposit');
+$routes->get('withdraw', 'Pages::withdraw');
+$routes->get('history', 'Pages::history');
+$routes->get('promotion', 'Pages::promotion');
+// $routes->get('event/wheel', 'Pages::wheel');
+// $routes->get('event/checkin', 'Pages::checkin');
+$routes->get('event/lotto', 'Pages::lotto');
+// $routes->get('change-password', 'Pages::changePassword');
+// $routes->get('wheel', 'Pages::wheel');
+// $routes->get('checkin', 'Pages::checkin');
 
 // API
 $routes->post('auth/login', 'api\Auth::login');

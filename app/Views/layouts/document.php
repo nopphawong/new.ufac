@@ -40,7 +40,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Our Custom CSS -->
-    <?= link_tag('/assets/css/style.css?v=1.1f') ?>
+    <?= link_tag('/assets/css/style.css?v=1.2a') ?>
 
     <!-- Loader -->
     <?= link_tag('/assets/css/loader.css?v=1.1c') ?>
@@ -77,13 +77,13 @@
 
     <div class="lottobtn <?= session()->logged_in ? 'logined' : 'd-none' ?>">
         <a href="/event/lotto" target="_self" rel="noopener noreferrer">
-            <img src="/assets/images/lotto.png">
+            <img src="<?= base_url() ?>assets/images/lotto.png">
             <span><?= lang('Lang.lotto.title') ?></span>
         </a>
     </div>
     <div class="linebtn <?= session()->logged_in ? 'logined' : '' ?>">
         <a href="<?= $line_link ?>" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/images/line.png">
+            <img src="<?= base_url() ?>assets/images/line.png">
             <span><?= lang('Lang.home.contact_us') ?></span>
         </a>
     </div>

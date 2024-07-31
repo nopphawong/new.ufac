@@ -2,88 +2,95 @@
 
 <?= $this->section("content") ?>
 
-<div class="containerlogin">
-    <div class="incontainlogin">
-        <div class="row m-0">
-            <div class="col-12 col-md-6 p-0 px-4 pb-2 logoleftlogin">
-                <img src="<?= $logo ?>">
-            </div>
-            <div id="forgot_box" class="col-12 col-md-6 p-0 pt-4 px-4">
-                <div>
-                    <div class="headerlogin">
-                        <h2><?= lang('Lang.forgot.forgot') ?></h2>
-                    </div>
-                    <div class="stepregister">
-                        <div class="stepregis headstep1 active">1</div>
-                        <div class="stepregis headstep2">2</div>
-                        <div class="stepregis headstep3"><i class="far fa-check" style="margin-top: 4px;"></i></div>
-                    </div>
-
-                    <!-- ---------------------step1--------------------- -->
-                    <div class="stepre01 slideto">
-                        <form @submit="verifyPhone">
-                            <div class=" form-group">
-                                <div>
-                                    <label><?= lang('Lang.register.mobile_number') ?></label>
-                                    <div class="el-input mt-1">
-                                        <input type="text" v-model="form.username" placeholder="<?= lang('Lang.register.mobile_number') ?>" class="inputstyle">
-                                        <p v-if="errors.username" class="error">{{errors.username}}</p>
-                                    </div>
+<!-- Forgot Modal -->
+<div class="modal fade" id="forgot-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background:none;">
+            <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="incontainlogin">
+                    <div class="row m-0">
+                        <div id="forgot_box" class="col-12 col-md-12 p-0 pt-4 px-4">
+                            <div>
+                                <div class="headerlogin">
+                                    <h2><?= lang('Lang.forgot.forgot') ?></h2>
                                 </div>
-                            </div>
-                            <button type="submit" class="loginbtn" id="btn-step1">
-                                Request OTP
-                            </button>
-                        </form>
-                    </div>
-                    <!-- ---------------------End step1--------------------- -->
+                                <div class="stepregister">
+                                    <div class="stepregis headstep1 active">1</div>
+                                    <div class="stepregis headstep2">2</div>
+                                    <div class="stepregis headstep3"><i class="far fa-check" style="margin-top: 4px;"></i></div>
+                                </div>
 
-                    <!-- ---------------------step2--------------------- -->
-                    <div class="regisstep stepre02 slideto">
-                        <form @submit="submitForgotPass">
-                            <div class="form-group">
-                                <div>
-                                    <label id="otp_code"><?= lang('Lang.forgot.otp_code') ?></label>
-                                    <div class="el-input mt-1">
-                                        <div class="flex-row-gap">
-                                            <input type="text" v-model="form.otpcode" placeholder="<?= lang('Lang.forgot.otp_code') ?>" class="inputstyle">
-                                            <div v-if="form.otpref"><?= lang('Lang.forgot.otp_ref') ?> {{form.otpref}}</div>
+                                <!-- ---------------------step1--------------------- -->
+                                <div class="stepre01 slideto">
+                                    <form @submit="verifyPhone">
+                                        <div class=" form-group">
+                                            <div>
+                                                <label><?= lang('Lang.register.mobile_number') ?></label>
+                                                <div class="el-input mt-1">
+                                                    <input type="text" v-model="form.username" placeholder="<?= lang('Lang.register.mobile_number') ?>" class="inputstyle">
+                                                    <p v-if="errors.username" class="error">{{errors.username}}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <p v-if="errors.otpcode" class="error">{{errors.otpcode}}</p>
-                                    </div>
+                                        <button type="submit" class="loginbtn" id="btn-forgot-step1">
+                                            Request OTP
+                                        </button>
+                                    </form>
                                 </div>
-                            </div>
-                            <div class=" form-group">
-                                <div>
-                                    <label><?= lang('Lang.forgot.new_password') ?></label>
-                                    <div class="el-input mt-1">
-                                        <input type="password" v-model="form.password" placeholder="<?= lang('Lang.forgot.new_password') ?>" class="inputstyle">
-                                        <p v-if="errors.password" class="error">{{errors.password}}</p>
-                                    </div>
+                                <!-- ---------------------End step1--------------------- -->
+
+                                <!-- ---------------------step2--------------------- -->
+                                <div class="regisstep stepre02 slideto">
+                                    <form @submit="submitForgotPass">
+                                        <div class="form-group">
+                                            <div>
+                                                <label id="otp_code"><?= lang('Lang.forgot.otp_code') ?></label>
+                                                <div class="el-input mt-1">
+                                                    <div class="flex-row-gap">
+                                                        <input type="text" v-model="form.otpcode" placeholder="<?= lang('Lang.forgot.otp_code') ?>" class="inputstyle">
+                                                        <div v-if="form.otpref"><?= lang('Lang.forgot.otp_ref') ?> {{form.otpref}}</div>
+                                                    </div>
+                                                    <p v-if="errors.otpcode" class="error">{{errors.otpcode}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" form-group">
+                                            <div>
+                                                <label><?= lang('Lang.forgot.new_password') ?></label>
+                                                <div class="el-input mt-1">
+                                                    <input type="password" v-model="form.password" placeholder="<?= lang('Lang.forgot.new_password') ?>" class="inputstyle">
+                                                    <p v-if="errors.password" class="error">{{errors.password}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="loginbtn" id="btn-forgot-step2">
+                                            <?= lang('Lang.forgot.confirm') ?>
+                                        </button>
+
+                                        <p style="margin-top: 20px;margin-bottom: 0;font-size: 12px;"><?= lang('Lang.forgot.otp_note') ?></p>
+                                        <a href="<?= $line_link ?>" target="_blank" rel="noreferrer" class="backbtn" style="display:block; text-align: center;text-decoration: none;margin-top: 0;color: #c2bfbf;"><?= lang('Lang.forgot.contact_us') ?></a>
+
+                                    </form>
                                 </div>
+                                <!-- ---------------------End step2--------------------- -->
+
+                                <!-- ---------------------step3--------------------- -->
+                                <div class="regisstep stepre03 slideto finishcontain">
+                                    <?= lang('Lang.forgot.reset_password_is_succeed') ?>
+                                </div>
+                                <!-- ---------------------End step3--------------------- -->
+                                <div class="wantregister"><?= lang('Lang.register.have_account') ?> <a href="<?= site_url('login') ?>"><?= lang('Lang.register.login_now') ?></a></div>
                             </div>
-
-                            <button type="submit" class="loginbtn" id="btn-step2">
-                                <?= lang('Lang.forgot.confirm') ?>
-                            </button>
-
-                            <p style="margin-top: 20px;margin-bottom: 0;font-size: 12px;"><?= lang('Lang.forgot.otp_note') ?></p>
-                            <a href="<?= $line_link ?>" target="_blank" rel="noreferrer" class="backbtn" style="display:block; text-align: center;text-decoration: none;margin-top: 0;color: #c2bfbf;"><?= lang('Lang.forgot.contact_us') ?></a>
-
-                        </form>
+                            <div class="lang-pos">
+                                <a href="<?= site_url('lang/th') ?>"><img src="<?= base_url() ?>assets/images/th.png" class="lang"></a>
+                                <a href="<?= site_url('lang/en') ?>"><img src="<?= base_url() ?>assets/images/en.png" class="lang"></a>
+                            </div>
+                        </div>
                     </div>
-                    <!-- ---------------------End step2--------------------- -->
-
-                    <!-- ---------------------step3--------------------- -->
-                    <div class="regisstep stepre03 slideto finishcontain">
-                        <?= lang('Lang.forgot.reset_password_is_succeed') ?>
-                    </div>
-                    <!-- ---------------------End step3--------------------- -->
-                    <div class="wantregister"><?= lang('Lang.register.have_account') ?> <a href="<?= site_url('login') ?>"><?= lang('Lang.register.login_now') ?></a></div>
-                </div>
-                <div class="lang-pos">
-                    <a href="<?= site_url('lang/th') ?>"><img src="/assets/images/th.png" class="lang"></a>
-                    <a href="<?= site_url('lang/en') ?>"><img src="/assets/images/en.png" class="lang"></a>
                 </div>
             </div>
         </div>
@@ -182,6 +189,7 @@
             $('#otp_code').html(`<?= lang('Lang.forgot.otp_code') ?> (${minutes}m ${seconds}s)`)
             // If the count down is finished, redirect forgot page.
             if (distance < 0) {
+                localStorage.clear("kCountdown")
                 backToStep1()
             }
         }, 1000)
@@ -195,13 +203,15 @@
         $(".headstep3").addClass("active");
 
         setTimeout(function() {
-            open_link('<?= site_url('login') ?>')
+            // localStorage.clear("kCountdown")
+            openLoginModal()
         }, 2000)
     }
 
     // Back step 1
     function backToStep1() {
         clearInterval(x)
+        localStorage.clear("kCountdown")
         $(".stepre02").hide();
         $(".stepre01").show();
         $(".headstep2").removeClass("active");
