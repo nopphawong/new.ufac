@@ -514,6 +514,7 @@
     Vue.createApp({
         data() {
             return {
+                logged_in: false,
                 form: {
                     username: '',
                     password: ''
@@ -524,16 +525,20 @@
         methods: {
             async submit(e) {
                 e?.preventDefault()
-                this.username = $('#txtUserName').val()
-                this.password = $('#password').val()
-                if (this.username == '' || this.password == '') return showAlert.warning(`<?= lang('Lang.home.have_not_user_yet') ?>`)
+                this.logged_in = Boolean('<?= session()->logged_in ?>')
+                if (this.logged_in) {
+                    this.username = $('#txtUserName').val()
+                    this.password = $('#password').val()
+                    if (this.username == '' || this.password == '') return showAlert.warning(`<?= lang('Lang.home.have_not_user_yet') ?>`)
 
-                // spinner('show')
-                // let token = await request_token(`<?= base_url("lobby/ufatoken") ?>`, $(`#form1`).attr(`action`))
-                // spinner('hide')
-                // if (!token) return showAlert.warning(`<?= lang('Lang.error.something_went_wrong', ["ufa token fail !"]) ?>`)
-
-                $('#form1').submit()
+                    // spinner('show')
+                    // let token = await request_token(`<?= base_url("lobby/ufatoken") ?>`, $(`#form1`).attr(`action`))
+                    // spinner('hide')
+                    // if (!token) return showAlert.warning(`<?= lang('Lang.error.something_went_wrong', ["ufa token fail !"]) ?>`)
+                    $('#form1').submit()
+                } else {
+                    openLoginModal()
+                }
             }
         },
     }).mount('#play_game')

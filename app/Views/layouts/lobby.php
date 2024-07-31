@@ -5,6 +5,13 @@
 <?= $this->include('layouts/header') ?>
 <?= $this->renderSection('content') ?>
 
+<?php if (!session()->logged_in) {
+    $this->include('pages/login');
+    $this->include('pages/register');
+    $this->include('pages/forgot');
+}
+?>
+
 <div class="myAlert-top alertcopy" style="display: none;">
     <i class="fal fa-check-circle"></i>
     <br>
@@ -13,9 +20,18 @@
 </div>
 
 <script type="text/javascript">
+    // NOTE: For ref.
+    const searchParams = new URLSearchParams(window.location.search);
+    for (const key of searchParams.keys()) {
+        if (key === 'ref') setTimeout(() => {
+            openRegisterModal()
+        }, 1000);
+    }
+
     Vue.createApp({
         data() {
             return {
+                logged_in: false,
                 timer: null,
                 balance: '0.00'
             }
@@ -61,12 +77,15 @@
             },
         },
         async mounted() {
-            await this.getLobbyData()
-            // await this.jobDaily()
-            this.timer = setInterval(async () => {
-                await this.getLobbyData(false)
+            this.logged_in = Boolean('<?= session()->logged_in ?>')
+            if (this.logged_in) {
+                await this.getLobbyData()
                 // await this.jobDaily()
-            }, 30000)
+                this.timer = setInterval(async () => {
+                    await this.getLobbyData(false)
+                    // await this.jobDaily()
+                }, 30000)
+            }
         },
         async unmounted() {
             this.timer = clearInterval(this.timer)
