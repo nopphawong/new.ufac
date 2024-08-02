@@ -6,7 +6,8 @@
 <link href="https://fontawesome.com/v4/assets/font-awesome/css/font-awesome.css" />
 <div id="lotto" class="tabcontent">
     <div class="headertab">
-        <h2><?= lang('Lang.lotto.title') ?> {{ info?.type ? `${info.type}` : `` }}</h2>
+        <h2 v-if="!info?.name"><?= lang('Lang.lotto.title') ?> {{ info?.type ? `${info.type}` : `` }}</h2>
+        <h2 v-else>{{ info?.name ? `${info.name}` : `<?= lang('Lang.lotto.title') ?>` }} {{ info?.type ? `${info.type}` : `` }}</h2>
     </div>
     <div v-if="info?.period" class="containprocess " style="margin-top: 10px;">
         <h4 class="text-center"><small class="text-warning"><?= lang('Lang.lotto.period') ?>:</small> {{ info.period ? date_th(info.period) : `-` }}</h4>
@@ -72,7 +73,7 @@
                                 <tr>
                                     <td width="50%" style="padding-top: 7px;">
                                         <div>{{ h.period ? date_th(h.period) : `` }}</div>
-                                        <div class="spanofbankhis">{{ h.type }}</div>
+                                        <div class="spanofbankhis">{{ h.name }} {{ h.type }}</div>
                                     </td>
                                     <td width="50%" style="text-align: right; line-height: 20px;">
                                         <div class="statushistory">
