@@ -289,7 +289,7 @@ footer {
   }
   .lottobtn.logined {
     right: 90px;
-    bottom: 85px;
+    bottom: 85px; 
   }
 }
 @media (max-width: 490px) {

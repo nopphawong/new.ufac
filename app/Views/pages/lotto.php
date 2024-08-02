@@ -126,7 +126,8 @@
                 this.loading = false
                 if (!status) return showAlert.warning(message, () => (this.list = []), 2000)
                 this.list = [...data || []]
-                if (!Object.keys(this.info).length) this.setup_lotto_info(this.list[0]?.id)
+                if (!Object.keys(this.list).length) return
+                this.setup_lotto_info(this.list[0]?.id)
             },
             async setup_lotto_info(id) {
                 this.loading = true

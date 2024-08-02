@@ -114,7 +114,7 @@
         // Copy the text inside the text field
         navigator.clipboard.writeText(copyText.innerHTML);
         setTimeout(function() {
-            $('.myAlert-top').hide()
+            $('.myAlert-top').hide() 
         }, 2000)
     }
 </script>

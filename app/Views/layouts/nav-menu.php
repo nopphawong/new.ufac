@@ -47,7 +47,7 @@
                 break;
             default:
                 openLoginModal()
-                break;
+                break; 
         }
     }
 

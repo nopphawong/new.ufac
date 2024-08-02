@@ -77,7 +77,7 @@ class Event extends BaseController {
         $checkin = (object)[
             "checkin" => $checkin->data->id,
             "title" => $checkin->data->title,
-            "detail" => $checkin->data->detail,
+            "detail" => $checkin->data->detail, 
             "progresses" => [],
         ];
         $progress = $portal->progress_list($checkin);

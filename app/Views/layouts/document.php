@@ -40,13 +40,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Our Custom CSS -->
-    <?= link_tag('/assets/css/style.css?v=1.2a') ?>
+    <?= link_tag('/assets/css/style.css?v=1.2aa') ?>
 
     <!-- Loader -->
     <?= link_tag('/assets/css/loader.css?v=1.1c') ?>
 
     <!-- Utils -->
-    <?= script_tag('/assets/js/utils.js?v=1.1c') ?>
+    <?= script_tag('/assets/js/utils.js?v=1.1cc') ?>
 
     <!-- jQuery CDN -->
     <?= script_tag('/assets/js/vue.js') ?>
@@ -80,7 +80,7 @@
             <img src="<?= base_url() ?>assets/images/lotto.png">
             <span><?= lang('Lang.lotto.title') ?></span>
         </a>
-    </div>
+    </div> 
     <div class="linebtn <?= session()->logged_in ? 'logined' : '' ?>">
         <a href="<?= $line_link ?>" target="_blank" rel="noopener noreferrer">
             <img src="<?= base_url() ?>assets/images/line.png">

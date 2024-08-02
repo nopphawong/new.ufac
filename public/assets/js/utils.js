@@ -222,5 +222,5 @@ function formatDate(inputDate, format) {
     tt: inputDate.getHours() < 12 ? 'AM' : 'PM'
   }
 
-  return format.replace(/yyyy|MM|dd|HH|hh|mm|ss|tt/g, (match) => parts[match])
+  return format.replace(/yyyy|MM|dd|HH|hh|mm|ss|tt/g, (match) => parts[match]) 
 }

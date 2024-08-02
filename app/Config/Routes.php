@@ -20,7 +20,7 @@ $routes->get('history', 'Pages::history');
 $routes->get('promotion', 'Pages::promotion');
 // $routes->get('event/wheel', 'Pages::wheel');
 // $routes->get('event/checkin', 'Pages::checkin');
-$routes->get('event/lotto', 'Pages::lotto');
+$routes->get('event/lotto', 'Pages::lotto'); 
 // $routes->get('change-password', 'Pages::changePassword');
 // $routes->get('wheel', 'Pages::wheel');
 // $routes->get('checkin', 'Pages::checkin');
