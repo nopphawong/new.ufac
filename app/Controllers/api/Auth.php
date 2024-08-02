@@ -21,6 +21,14 @@ class Auth extends BaseController {
             ['logged_in' => TRUE],
         );
         session()->set($ses_data);
+        
+        // check and add old webuser
+        $Portal = new Portal();
+        $Portal->webuser_checkup([
+            "webuser" => $data->webuser,
+            "webpass" => $data->webpass,
+            "tel" => $data->userid,
+        ]);
 
         // $history = $service->history([
         //     'web' => session()->web,

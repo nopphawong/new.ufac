@@ -119,6 +119,9 @@ class Portal {
     public function webuser_unlink($data = array()) {
         return self::post("webuser/unlink", $data);
     }
+    public function webuser_checkup($data = array()) {
+        return self::post("webuser/checkup", $data);
+    }
 
     // channel
     public function channel_list($data = array()) {
